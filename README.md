@@ -1,8 +1,8 @@
-# React + Vite
+# Quick Tools
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This portal will have multiple quick tools which can be handy to access and can save extra needful efforts to achieve simple tasks.
 
-Currently, two official plugins are available:
+Currently available features:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [Click to chat for WhatsApp](https://faq.whatsapp.com/5913398998672934) for those quick conversation without saving contact number.
+- More to come.
