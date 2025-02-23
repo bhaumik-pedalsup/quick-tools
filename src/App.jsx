@@ -1,6 +1,7 @@
 import { useState } from "react";
 import PhoneInputWithCountrySelect from "react-phone-number-input";
 import "react-phone-number-input/style.css";
+import { validateNumber } from "./utils/validations";
 
 function App() {
   const [number, setNumber] = useState("");
@@ -8,6 +9,17 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (validateNumber(number)) {
+      window.open(
+        `https://wa.me/${number.replace(
+          /[^0-9]/g,
+          ""
+        )}?text=${encodeURIComponent(message)}`,
+        "_blank"
+      );
+    } else {
+      alert("Please enter a valid phone number");
+    }
   };
 
   return (
