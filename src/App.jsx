@@ -1,7 +1,7 @@
 import { useState } from "react";
-import PhoneInputWithCountrySelect from "react-phone-number-input";
-import "react-phone-number-input/style.css";
-import { validateNumber } from "./utils/validations";
+import { PhoneInput } from "react-international-phone";
+import "react-international-phone/style.css";
+// import { validateNumber } from "./utils/validations";
 
 function App() {
   const [number, setNumber] = useState("");
@@ -9,17 +9,16 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (validateNumber(number)) {
-      window.open(
-        `https://wa.me/${number.replace(
-          /[^0-9]/g,
-          ""
-        )}?text=${encodeURIComponent(message)}`,
-        "_blank"
-      );
-    } else {
-      alert("Please enter a valid phone number");
-    }
+    // if (validateNumber(number)) {
+    window.open(
+      `https://wa.me/${number.replace(/[^0-9]/g, "")}?text=${encodeURIComponent(
+        message
+      )}`,
+      "_blank"
+    );
+    // } else {
+    //   alert("Please enter a valid phone number");
+    // }
   };
 
   return (
@@ -36,12 +35,18 @@ function App() {
         >
           <div className="flex flex-col gap-y-2 whatsapp_input">
             <div className="whatsapp_number">
-              <PhoneInputWithCountrySelect
-                defaultCountry="IN"
-                placeholder="Enter phone number"
+              <PhoneInput
+                defaultCountry="in"
                 value={number}
-                onChange={setNumber}
-                className="w-full px-4 py-2 border-2 rounded-xl"
+                onChange={(phone) => setNumber(phone)}
+                inputProps={{
+                  placeholder: "Enter phone number",
+                }}
+                className="flex items-center w-full px-4 py-2 border-2 rounded-xl"
+                inputClassName="!border-0 !h-auto !text-base"
+                countrySelectorStyleProps={{
+                  buttonClassName: "!border-0 !h-auto",
+                }}
               />
             </div>
             <div className="whatsapp_message">
@@ -51,7 +56,7 @@ function App() {
                 placeholder="Enter message"
                 value={message}
                 onChange={(e) => setMessage(e.target.value)}
-                className="w-full px-4 py-2 border-2 rounded-xl"
+                className="w-full px-4 py-2 text-base border-2 rounded-xl"
               />
             </div>
           </div>
